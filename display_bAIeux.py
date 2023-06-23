@@ -59,7 +59,7 @@ unzip_file(file_path2, destination)
 os.remove(file_path1)
 os.remove(file_path2)
 
-folder_path_1 = 'materiel/bayeux_generate_out2'
+folder_path_1 = 'materiel/test_seq'
 folder_path_2 = 'materiel/prompt'
 
 # Get a list of all files in folder 1
