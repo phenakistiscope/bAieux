@@ -37,7 +37,9 @@ source venv/bin/baieux
 pip install -r requirements.txt
 ```
 
-4. Exécutez le script en utilisant la ligne de commande :
+## Visualiser la tapisserie de bAIeux
+
+Exécutez le script en utilisant la ligne de commande :
 
 ```shell
 streamlit run display_bAIeux.py
