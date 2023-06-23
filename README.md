@@ -19,13 +19,13 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
    
 2. Créer et activer un environnement virutel :
 
-Avec conda
+   Avec conda
   ```shell
   conda create -n baieux python=3.x
   conda activate baieux
    ```
 
-Avec venv
+   Avec venv
   ```shell
   python -m baieux venv
   source venv/bin/baieux
