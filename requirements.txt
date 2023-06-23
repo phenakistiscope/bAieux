@@ -1,6 +1,6 @@
-streamlit
 PIL
 json
 requests
 zipfile
 os
+streamlit
