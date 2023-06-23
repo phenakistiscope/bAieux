@@ -21,7 +21,7 @@ cd bAieux
 
 Avec conda
 ```shell
-conda create -n baieux python=3.x
+conda create -n baieux python=3.8.8
 conda activate baieux
 ```
 
