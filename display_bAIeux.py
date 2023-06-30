@@ -1,9 +1,13 @@
+"""
+# bAIeux
+"""
+
 import streamlit as st
-from PIL import Image, ImageDraw, ImageFont
-import json
+from PIL import Image
 import requests
 import zipfile
 import os
+import shutil
 
 def download_file_from_google_drive(file_id, destination):
     URL = "https://drive.google.com/uc?export=download&id=" + file_id
@@ -11,11 +15,13 @@ def download_file_from_google_drive(file_id, destination):
     session = requests.Session()
     response = session.get(URL, stream=True)
 
-    token = get_confirm_token(response)
+    if "confirm" in response.url:
+        confirm_token = get_confirm_token(response)
+        if confirm_token:
+            params = {'id': file_id, 'confirm': confirm_token}
+            response = session.get(URL, params=params, stream=True)
 
-    if token:
-        params = {'id': file_id, 'confirm': token}
-        response = session.get(URL, params=params, stream=True)
+    response.headers['Content-Disposition'] = 'attachment; filename="' + destination + '"'
 
     save_response_content(response, destination)
 
@@ -23,6 +29,7 @@ def get_confirm_token(response):
     for key, value in response.cookies.items():
         if key.startswith('download_warning'):
             return value
+
     return None
 
 def save_response_content(response, destination):
@@ -36,34 +43,58 @@ def save_response_content(response, destination):
 def unzip_file(file_path, destination):
     with zipfile.ZipFile(file_path, 'r') as zip_ref:
         zip_ref.extractall(destination)
-
-# Example usage
-#url1 = 'https://drive.google.com/file/d/1t23vz8K0WY4a9OqO_C38lwmxPRHQsUgr/view?usp=share_link'
-#url2 = 'https://drive.google.com/file/d/1VMbOuJOSinQ2NFZOOHKoLWVsncNS1BVM/view?usp=share_link'
+#https://drive.google.com/file/d/1qsdc9f6YvZgZ3yAF6e47yW_rgMd-evfO/view?usp=share_link
+#https://drive.google.com/file/d/1AM_-yOFjvgsPZ8PDzo6MHpuxw-QKMf3k/view?usp=share_link
 destination = 'materiel'
-
-file_id1 = "1t23vz8K0WY4a9OqO_C38lwmxPRHQsUgr"
+file_id1 = "1qsdc9f6YvZgZ3yAF6e47yW_rgMd-evfO"
+file_id11 = "1AM_-yOFjvgsPZ8PDzo6MHpuxw-QKMf3k"
 file_id2 = "1VMbOuJOSinQ2NFZOOHKoLWVsncNS1BVM"
 
-# Download and extract the first file
-file_path1 = destination + file_id1 + '.ext'
+# Téléchargement du premier fichier
+file_path1 = os.path.join(destination, file_id1 + '.zip')
 download_file_from_google_drive(file_id1, file_path1)
-unzip_file(file_path1, destination)
 
-# Download and extract the second file
-file_path2 = destination + file_id2 + '.ext'
+file_path11 = os.path.join(destination, file_id11 + '.zip')
+download_file_from_google_drive(file_id11, file_path11)
+
+# Téléchargement du deuxième fichier
+file_path2 = os.path.join(destination, file_id2 + '.zip')
 download_file_from_google_drive(file_id2, file_path2)
+
+# Extraction des fichiers
+unzip_file(file_path1, destination)
+unzip_file(file_path11, destination)
 unzip_file(file_path2, destination)
 
-# Remove the extracted files
+# Suppression des fichiers zip
 os.remove(file_path1)
+os.remove(file_path11)
 os.remove(file_path2)
 
-folder_path_1 = 'materiel/bayeux_generate_out300623'
+folder_path_1 = 'materiel/bayeux_generate_out300623_'
+folder_path_11 = 'materiel/bayeux_generate_out300623_2'
 folder_path_2 = 'materiel/bayeux_prompt300623'
 
+destination_folder = 'materiel/merged_images'
+
+# Créer le dossier de destination s'il n'existe pas déjà
+if not os.path.exists(destination_folder):
+    os.makedirs(destination_folder)
+
+# Copier les fichiers du premier dossier vers le dossier de destination
+for filename in os.listdir(folder_path_1):
+    src = os.path.join(folder_path_1, filename)
+    dst = os.path.join(destination_folder, filename)
+    shutil.copy(src, dst)
+
+# Copier les fichiers du deuxième dossier vers le dossier de destination
+for filename in os.listdir(folder_path_11):
+    src = os.path.join(folder_path_11, filename)
+    dst = os.path.join(destination_folder, filename)
+    shutil.copy(src, dst)
+
 # Get a list of all files in folder 1
-files_folder_1 = os.listdir(folder_path_1)
+files_folder_1 = os.listdir(destination_folder)
 
 # Sort the files based on their numeric part
 images = sorted(files_folder_1, key=lambda x: int(x.split('_')[0]))
