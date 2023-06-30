@@ -88,9 +88,9 @@ for filename in os.listdir(folder_path_1):
     shutil.copy(src, dst)
 
 # Copier les fichiers du deuxième dossier vers le dossier de destination
-for filename in os.listdir(folder_path_2):
+for filename in os.listdir(folder_path_11):
     if not filename.startswith('.'):  # Ignorer les fichiers commençant par '.'
-        src = os.path.join(folder_path_2, filename)
+        src = os.path.join(folder_path_11, filename)
         dst = os.path.join(destination_folder, filename)
         shutil.copy(src, dst)
 
