@@ -109,7 +109,7 @@ files_folder_2 = os.listdir(folder_path_2)
 files_folder_2_ = [image for image in files_folder_2 if not image.endswith('.DS_Store')]
 
 # Sort the files based on their numeric part
-captions = sorted(files_folder_2_, key=lambda x: int(x.split('_')[0]) if '_' in x else float('inf'))
+captions = sorted(files_folder_2_, key=lambda x: int(x.split('_')[0]))
 
 
 # Affichage des images une par une avec légende et texte
