@@ -111,7 +111,6 @@ files_folder_2_ = [image for image in files_folder_2 if not image.endswith('.DS_
 # Sort the files based on their numeric part
 captions = sorted(files_folder_2_, key=lambda x: int(x.split('_')[0]))
 
-
 # Affichage des images une par une avec légende et texte
 for image, caption in zip(images, captions):
     img = Image.open(os.path.join(folder_path_1, image))
