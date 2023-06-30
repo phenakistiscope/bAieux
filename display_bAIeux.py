@@ -104,7 +104,7 @@ images = sorted(files_folder_1, key=lambda x: int(x.split('_')[0]))
 files_folder_2 = os.listdir(folder_path_2)
 
 # Sort the files based on their numeric part
-captions = sorted(files_folder_2, key=lambda x: int(x.split('_')[0]))
+captions = sorted(captions, key=lambda x: int(x.split('_')[0]) if '_' in x else float('inf'))
 
 
 # Affichage des images une par une avec légende et texte
