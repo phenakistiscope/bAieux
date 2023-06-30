@@ -38,12 +38,12 @@ def unzip_file(file_path, destination):
         zip_ref.extractall(destination)
 
 # Example usage
-#url1 = 'https://drive.google.com/file/d/1fujwQ9L1Za2xweryNFX_W1NLLpr_4UC_/view?usp=share_link'
-#url2 = 'https://drive.google.com/file/d/1f-Ad-p8g04DIP0zM7HzH0jvLeoZoy6NF/view?usp=share_link'
+#url1 = 'https://drive.google.com/file/d/1t23vz8K0WY4a9OqO_C38lwmxPRHQsUgr/view?usp=share_link'
+#url2 = 'https://drive.google.com/file/d/1VMbOuJOSinQ2NFZOOHKoLWVsncNS1BVM/view?usp=share_link'
 destination = 'materiel'
 
-file_id1 = "1fujwQ9L1Za2xweryNFX_W1NLLpr_4UC_"
-file_id2 = "1f-Ad-p8g04DIP0zM7HzH0jvLeoZoy6NF"
+file_id1 = "1t23vz8K0WY4a9OqO_C38lwmxPRHQsUgr"
+file_id2 = "1VMbOuJOSinQ2NFZOOHKoLWVsncNS1BVM"
 
 # Download and extract the first file
 file_path1 = destination + file_id1 + '.ext'
