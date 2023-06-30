@@ -38,12 +38,12 @@ def unzip_file(file_path, destination):
         zip_ref.extractall(destination)
 
 # Example usage
-#url1 = 'https://drive.google.com/file/d/1GY6Dpe-ecWNNlbtp-fhpj7h08MCldZjt/view?usp=share_link'
-#url2 = 'https://drive.google.com/file/d/1yoRlB-1SWeLfpB2B8WPMEPp5N2lfIR6u/view?usp=share_link'
+#url1 = 'https://drive.google.com/file/d/1fujwQ9L1Za2xweryNFX_W1NLLpr_4UC_/view?usp=share_link'
+#url2 = 'https://drive.google.com/file/d/1f-Ad-p8g04DIP0zM7HzH0jvLeoZoy6NF/view?usp=share_link'
 destination = 'materiel'
 
-file_id1 = "1GY6Dpe-ecWNNlbtp-fhpj7h08MCldZjt"
-file_id2 = "1yoRlB-1SWeLfpB2B8WPMEPp5N2lfIR6u"
+file_id1 = "1fujwQ9L1Za2xweryNFX_W1NLLpr_4UC_"
+file_id2 = "1f-Ad-p8g04DIP0zM7HzH0jvLeoZoy6NF"
 
 # Download and extract the first file
 file_path1 = destination + file_id1 + '.ext'
@@ -59,8 +59,8 @@ unzip_file(file_path2, destination)
 os.remove(file_path1)
 os.remove(file_path2)
 
-folder_path_1 = 'materiel/test_seq'
-folder_path_2 = 'materiel/prompt'
+folder_path_1 = 'materiel/bayeux_generate_out300623'
+folder_path_2 = 'materiel/bayeux_prompt300623'
 
 # Get a list of all files in folder 1
 files_folder_1 = os.listdir(folder_path_1)
