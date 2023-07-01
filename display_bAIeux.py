@@ -106,14 +106,14 @@ images = sorted(files_folder_1_, key=lambda x: int(x.split('_')[0]))
 # Get a list of all files in folder 2
 files_folder_2 = os.listdir(folder_path_2)
 # Supprimer tous les fichiers se terminant par '.DS_Store'
-files_folder_2_ = [image for image in files_folder_2 if not image.endswith('.DS_Store')]
+files_folder_2_ = [p for p in files_folder_2 if not p.endswith('.DS_Store')]
 
 # Sort the files based on their numeric part
 captions = sorted(files_folder_2_, key=lambda x: int(x.split('_')[0]))
 
 # Affichage des images une par une avec légende et texte
-for image, caption in zip(images, captions):
-    img = Image.open(os.path.join(destination_folder, image))
+for img, caption in zip(images, captions):
+    img = Image.open(os.path.join(destination_folder, img))
     caption_path = os.path.join(folder_path_2, caption)
     
     with open(caption_path, 'r') as file:
