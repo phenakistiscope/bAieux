@@ -44,3 +44,6 @@ Exécutez le script en utilisant la ligne de commande :
 ```shell
 streamlit run display_bAIeux.py
 ```
+
+https://github.com/phenakistiscope/bAieux/assets/56683582/82831d16-9114-47a3-bb24-8c0e5b093422
+
