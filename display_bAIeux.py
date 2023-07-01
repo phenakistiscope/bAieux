@@ -113,7 +113,7 @@ captions = sorted(files_folder_2_, key=lambda x: int(x.split('_')[0]))
 
 # Affichage des images une par une avec légende et texte
 for image, caption in zip(images, captions):
-    img = Image.open(os.path.join(folder_path_1, image))
+    img = Image.open(os.path.join(destination_folder, image))
     caption_path = os.path.join(folder_path_2, caption)
     
     with open(caption_path, 'r') as file:
