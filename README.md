@@ -45,5 +45,6 @@ Exécutez le script en utilisant la ligne de commande :
 streamlit run display_bAIeux.py
 ```
 
-https://github.com/phenakistiscope/bAieux/assets/56683582/82831d16-9114-47a3-bb24-8c0e5b093422
+![ezgif com-video-to-gif-2](https://github.com/phenakistiscope/bAieux/assets/56683582/33a2ade8-140a-4740-9de7-5e9d0401978f)
+
 
