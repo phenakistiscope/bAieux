@@ -52,14 +52,14 @@ file_id11 = "1AM_-yOFjvgsPZ8PDzo6MHpuxw-QKMf3k"
 file_id2 = "1VMbOuJOSinQ2NFZOOHKoLWVsncNS1BVM"
 
 # Téléchargement du premier fichier
-file_path1 = os.path.join(destination, file_id1 + '.zip')
+file_path1 = os.path.join(file_id1 + '.zip')
 download_file_from_google_drive(file_id1, file_path1)
 
-file_path11 = os.path.join(destination, file_id11 + '.zip')
+file_path11 = os.path.join(file_id11 + '.zip')
 download_file_from_google_drive(file_id11, file_path11)
 
 # Téléchargement du deuxième fichier
-file_path2 = os.path.join(destination, file_id2 + '.zip')
+file_path2 = os.path.join(file_id2 + '.zip')
 download_file_from_google_drive(file_id2, file_path2)
 
 # Extraction des fichiers
